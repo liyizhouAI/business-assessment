@@ -1,0 +1,6 @@
+{
+  "build_command": "npm install",
+  "install_command": "npm install",
+  "start_command": "node api/index.js",
+  "node_version": "18"
+}
