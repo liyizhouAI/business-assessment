@@ -129,7 +129,9 @@
             transition: all 0.3s;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
+            text-align: center;
         }
 
         .btn-primary {
@@ -441,18 +443,16 @@
                     <div class="config-group">
                         <label class="config-label">AI服务商</label>
                         <select class="config-select" id="ai-provider">
-                            <option value="claude">Claude (Anthropic)</option>
-                            <option value="openai">OpenAI GPT-4</option>
                             <option value="deepseek">DeepSeek</option>
-                            <option value="qwen">通义千问</option>
-                            <option value="zhipu">智谱GLM</option>
+                            <option value="openai">OpenAI</option>
+                            <option value="claude">Claude (Anthropic)</option>
                         </select>
                     </div>
                     
                     <div class="config-group">
                         <label class="config-label">模型版本</label>
                         <select class="config-select" id="model-version">
-                            <option value="claude-3-sonnet">Claude 3 Sonnet</option>
+                            <option value="deepseek-r1">DeepSeek R1</option>
                         </select>
                     </div>
                     
@@ -472,7 +472,7 @@
                         <input type="password" class="config-input" id="api-key" placeholder="输入API密钥">
                     </div>
                     
-                    <button class="btn btn-success" onclick="testConnection()">
+                    <button class="btn btn-success" onclick="testConnection()" style="width: 100%;">
                         🔗 测试连接
                     </button>
                 </div>
@@ -497,7 +497,7 @@
                 <div class="version-list" id="version-list">
                     <div class="version-item active">
                         <div class="version-info">
-                            <div class="version-name">默认版本 v1.0</div>
+                            <div class="version-name">默认版本 v1.0 (DeepSeek R1)</div>
                             <div class="version-date">2024-01-15 14:30</div>
                         </div>
                         <div class="version-actions">
@@ -587,6 +587,8 @@
             loadVersions();
             loadStats();
             initEventListeners();
+            // 初始化模型版本选项
+            updateModelVersions('deepseek');
         });
 
         // 事件监听器
@@ -612,24 +614,19 @@
         function updateModelVersions(provider) {
             const versionSelect = document.getElementById('model-version');
             const versions = {
-                'claude': [
-                    { value: 'claude-3-sonnet', text: 'Claude 3 Sonnet' },
-                    { value: 'claude-3-haiku', text: 'Claude 3 Haiku' }
-                ],
-                'openai': [
-                    { value: 'gpt-4-turbo', text: 'GPT-4 Turbo' },
-                    { value: 'gpt-4', text: 'GPT-4' },
-                    { value: 'gpt-3.5-turbo', text: 'GPT-3.5 Turbo' }
-                ],
                 'deepseek': [
+                    { value: 'deepseek-r1', text: 'DeepSeek R1' },
                     { value: 'deepseek-chat', text: 'DeepSeek Chat' }
                 ],
-                'qwen': [
-                    { value: 'qwen-max', text: 'Qwen Max' },
-                    { value: 'qwen-plus', text: 'Qwen Plus' }
+                'openai': [
+                    { value: 'gpt-o3', text: 'GPT-o3 (Preview)' },
+                    { value: 'gpt-4o', text: 'GPT-4o' },
+                    { value: 'gpt-4-turbo', text: 'GPT-4 Turbo' }
                 ],
-                'zhipu': [
-                    { value: 'glm-4', text: 'GLM-4' }
+                'claude': [
+                    { value: 'claude-sonnet-4', text: 'Claude Sonnet 4' },
+                    { value: 'claude-3-5-sonnet', text: 'Claude 3.5 Sonnet' },
+                    { value: 'claude-3-sonnet', text: 'Claude 3 Sonnet' }
                 ]
             };
 
@@ -762,14 +759,20 @@
             document.getElementById('prompt-editor').value = version.prompt;
             
             // 加载配置
-            document.getElementById('ai-provider').value = version.config.provider;
-            updateModelVersions(version.config.provider);
-            setTimeout(() => {
-                document.getElementById('model-version').value = version.config.model;
-                document.getElementById('temperature').value = version.config.temperature;
-                document.getElementById('temp-value').textContent = version.config.temperature;
-                document.getElementById('max-tokens').value = version.config.maxTokens;
-            }, 100);
+            if (version.config) {
+                const provider = version.config.provider;
+                // 只有当provider是支持的服务商时才设置
+                if (['deepseek', 'openai', 'claude'].includes(provider)) {
+                    document.getElementById('ai-provider').value = provider;
+                    updateModelVersions(provider);
+                    setTimeout(() => {
+                        document.getElementById('model-version').value = version.config.model;
+                        document.getElementById('temperature').value = version.config.temperature;
+                        document.getElementById('temp-value').textContent = version.config.temperature;
+                        document.getElementById('max-tokens').value = version.config.maxTokens;
+                    }, 100);
+                }
+            }
             
             showToast(`已加载版本: ${version.name}`, 'success');
         }
@@ -794,11 +797,17 @@
                 return;
             }
 
+            const providerNames = {
+                'deepseek': 'DeepSeek',
+                'openai': 'OpenAI',
+                'claude': 'Claude'
+            };
+
             showToast('正在测试连接...', 'success');
             
             // 模拟API测试
             setTimeout(() => {
-                showToast(`${provider} 连接测试成功！`, 'success');
+                showToast(`${providerNames[provider]} 连接测试成功！`, 'success');
             }, 1000);
         }
 
