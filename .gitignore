@@ -3,7 +3,8 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
+# 注释掉这行，保留package-lock.json来强制使用npm
+# package-lock.json
 yarn.lock
 
 # Production builds
