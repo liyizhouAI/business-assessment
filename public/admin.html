@@ -391,53 +391,41 @@
                     </div>
                 </div>
                 
-                <textarea class="prompt-editor" id="prompt-editor" placeholder="在这里编写你的提示词...">你是李一舟，AI商业导师，擅长一针见血地指出商业本质。
+                <textarea class="prompt-editor" id="prompt-editor" placeholder="在这里编写你的提示词...">下面这版提示词直接拧成"诊断动刀指南",逻辑更狠、指向更清晰——抄过去就能用。
 
-请用你的独特风格分析这个项目：
+✦ 输出结构(铁律)
+**开场一句——判决书式结论**
+* **≥ 90** 强推:加杠杆、加资源、加速干。
+* **80-89** 优质:好胎盘,但骨架还缺一根梁。
+* **70-79** 鸡肋:流量或模式不翻新,等于瞎折腾。
+* **60-69** 不优:赶紧调头,别再烧时间。
+* **< 60** 重启:方向+打法双失配,马上重定位。
 
-✦ 输出结构（铁律）
-开场一句——判决书式结论
+**三刀精准拆(每刀一句)**
+* **流量** → 钩子?通路?客群是否对味。
+* **运营** → 节奏?交付?人岗是否错位。
+* **服务** → 同质?复购?毛利是否塌陷。
 
-≥ 90 强推：加杠杆、加资源、加速干。
+**一句制胜动作(第一性原理)** 
+示例:
+* 别再灌内容,先把成交路径实操一遍。
+* 用一星期重做 slogan,让路人三秒get业务。
+* 先测一个能激发转发的标题,顶十条视频。
 
-80-89 优质：好胎盘，但骨架还缺一根梁。
+**100 字内回显打分** 
+【评分总览】流量 x,运营 x,服务 x,热情 x,总分 x 分。
 
-70-79 鸡肋：流量或模式不翻新，等于瞎折腾。
+✦ 写作规矩(必须死守)
+* 像我在微信给兄弟拍砖,口语利落、不编号。
+* 不复述学员背景,不加 AI 术语,不兜圈子。
+* 字数 ≤ 500,句句带锋,直指"识局-拆解-落点"。
 
-60-69 不优：赶紧调头，别再烧时间。
+## 分析用户项目
+用户项目信息：{USER_DATA}
+评分详情：{SCORES}
+总分：{FINAL_SCORE}/100
 
-＜ 60 重启：方向＋打法双失配，马上重定位。
-
-三刀精准拆（每刀一句）
-
-流量 → 钩子？通路？客群是否对味。
-
-运营 → 节奏？交付？人岗是否错位。
-
-服务 → 同质？复购？毛利是否塌陷。
-
-一句制胜动作（第一性原理）
-示例：
-
-别再灌内容，先把成交路径实操一遍。
-
-用一星期重做 slogan，让路人三秒get业务。
-
-先测一个能激发转发的标题，顶十条视频。
-
-100 字内回显打分
-【评分总览】流量 x，运营 x，服务 x，热情 x，总分 x 分。
-
-✦ 写作规矩（必须死守）
-像我在微信给兄弟拍砖，口语利落、不编号。
-
-不复述学员背景，不加 AI 术语，不兜圈子。
-
-字数 ≤ 500，句句带锋，直指“识局-拆解-落点”。
-
-拿去，照着干。
-
-请基于以上信息，生成一份犀利且实用的商业定位分析报告。</textarea>
+拿去,照着干。</textarea>
                 
                 <div style="margin-top: 15px; display: flex; gap: 10px;">
                     <button class="btn btn-primary" onclick="savePrompt()">
@@ -492,6 +480,20 @@
                     <button class="btn btn-success" onclick="testConnection()" style="width: 100%;">
                         🔗 测试连接
                     </button>
+                    
+                    <div style="margin-top: 10px; padding: 10px; background: #fff3cd; border-radius: 6px; font-size: 12px; color: #856404;">
+                        <strong>⚠️ 重要说明：</strong><br>
+                        1. <strong>CORS跨域限制</strong>：浏览器无法直接调用AI API<br>
+                        2. <strong>当前为演示模式</strong>：使用模拟数据展示新提示词效果<br>
+                        3. <strong>真实部署方案</strong>：需要后端代理或CORS扩展<br>
+                        4. <strong>推荐解决方案</strong>：将此页面部署到Node.js/Python后端<br>
+                        <div style="margin-top: 8px; padding: 8px; background: #e3f2fd; border-radius: 4px;">
+                            <strong>🔧 快速解决CORS：</strong><br>
+                            • 安装浏览器扩展：CORS Unblock<br>
+                            • 或启动Chrome：--disable-web-security<br>
+                            • 最佳方案：后端代理API调用
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -514,8 +516,8 @@
                 <div class="version-list" id="version-list">
                     <div class="version-item active">
                         <div class="version-info">
-                            <div class="version-name">默认版本 v1.0 (DeepSeek R1)</div>
-                            <div class="version-date">2024-01-15 14:30</div>
+                            <div class="version-name">诊断动刀指南 v2.0 (DeepSeek R1)</div>
+                            <div class="version-date">2025-01-15 14:30</div>
                         </div>
                         <div class="version-actions">
                             <button class="btn btn-secondary btn-small" onclick="loadVersion(this)">
@@ -577,6 +579,26 @@
                 <button class="btn btn-warning" onclick="compareVersions()">
                     📊 版本对比
                 </button>
+                <button class="btn btn-primary" onclick="validatePrompt()" style="background: #17a2b8;">
+                    🔍 检查提示词
+                </button>
+            </div>
+            
+            <div style="background: #e3f2fd; border-radius: 8px; padding: 15px; margin-bottom: 15px; border-left: 4px solid #2196f3;">
+                <strong>🎯 当前提示词状态：</strong>
+                <div id="prompt-preview" style="margin-top: 8px; font-size: 14px; color: #1565c0;">
+                    点击"检查提示词"查看当前使用的版本
+                </div>
+            </div>
+            
+            <div style="background: #ffebee; border-radius: 8px; padding: 15px; margin-bottom: 15px; border-left: 4px solid #f44336;">
+                <strong>🌐 运行模式状态：</strong>
+                <div id="cors-status" style="margin-top: 8px; font-size: 14px; color: #c62828;">
+                    <span style="color: #f57c00;">⚠️ 演示模式</span> - 由于CORS限制，当前使用模拟数据展示新提示词效果
+                </div>
+                <div style="margin-top: 8px; font-size: 12px; color: #666;">
+                    要使用真实AI，请部署到支持代理的服务器环境或安装CORS浏览器扩展
+                </div>
             </div>
             
             <div class="test-data">
@@ -596,7 +618,7 @@
         // 全局变量
         let currentPrompt = '';
         let savedVersions = JSON.parse(localStorage.getItem('promptVersions') || '[]');
-        let stats = JSON.parse(localStorage.getItem('adminStats') || '{"totalReports":0,"successRate":"100%","avgScore":"75","responseTime":"1200ms"}');
+        let stats = JSON.parse(localStorage.getItem('adminStats') || '{"totalReports":0,"successCount":0,"successRate":"100%","avgScore":"75","responseTime":"1200ms"}');
 
         // 初始化
         document.addEventListener('DOMContentLoaded', function() {
@@ -606,7 +628,30 @@
             initEventListeners();
             // 初始化模型版本选项
             updateModelVersions('deepseek');
+            // 加载保存的API Key
+            loadSavedApiKey();
+            // 自动检查提示词状态
+            setTimeout(validatePrompt, 500);
+            // 初始化CORS状态
+            updateCorsStatus(false);
         });
+
+        // 加载保存的API Key
+        function loadSavedApiKey() {
+            const savedKey = localStorage.getItem('apiKey');
+            if (savedKey) {
+                document.getElementById('api-key').value = savedKey;
+            }
+        }
+
+        // 保存API Key
+        function saveApiKey() {
+            const apiKey = document.getElementById('api-key').value;
+            if (apiKey) {
+                localStorage.setItem('apiKey', apiKey);
+                showToast('API Key已保存', 'success');
+            }
+        }
 
         // 事件监听器
         function initEventListeners() {
@@ -624,6 +669,11 @@
             // AI服务商切换
             document.getElementById('ai-provider').addEventListener('change', function(e) {
                 updateModelVersions(e.target.value);
+            });
+
+            // API Key自动保存
+            document.getElementById('api-key').addEventListener('blur', function() {
+                saveApiKey();
             });
         }
 
@@ -664,45 +714,55 @@
             document.getElementById('prompt-status').className = 'status online';
             document.getElementById('prompt-status').innerHTML = '<span>●</span> 已保存';
             
+            // 自动检查提示词状态
+            validatePrompt();
+            
             showToast('提示词保存成功！', 'success');
         }
 
         // 重置提示词
         function resetPrompt() {
             if (confirm('确定要重置为默认提示词吗？')) {
-                const defaultPrompt = `你是李一舟，AI商业导师，擅长一针见血地指出商业本质。
+                const defaultPrompt = `下面这版提示词直接拧成"诊断动刀指南",逻辑更狠、指向更清晰——抄过去就能用。
 
-请用你的独特风格分析这个项目：
+✦ 输出结构(铁律)
+**开场一句——判决书式结论**
+* **≥ 90** 强推:加杠杆、加资源、加速干。
+* **80-89** 优质:好胎盘,但骨架还缺一根梁。
+* **70-79** 鸡肋:流量或模式不翻新,等于瞎折腾。
+* **60-69** 不优:赶紧调头,别再烧时间。
+* **< 60** 重启:方向+打法双失配,马上重定位。
 
-## 风格特点
-- 开门见山，直击要害："底层逻辑是..."
-- 大白话解释："讲白了就是..."  
-- 犀利判断，不留情面
-- 给出具体行动清单
-- 用数据说话，追求效率最大化
-- 强调长期主义和护城河思维
+**三刀精准拆(每刀一句)**
+* **流量** → 钩子?通路?客群是否对味。
+* **运营** → 节奏?交付?人岗是否错位。
+* **服务** → 同质?复购?毛利是否塌陷。
 
-## 输出结构
-🎯 核心判断 - 一句话点透问题
-📊 深度解析 - 拆解商业逻辑  
-⚡ 行动清单 - 30/60/90天计划
-💡 心法提醒 - 底层思维升级
+**一句制胜动作(第一性原理)** 
+示例:
+* 别再灌内容,先把成交路径实操一遍。
+* 用一星期重做 slogan,让路人三秒get业务。
+* 先测一个能激发转发的标题,顶十条视频。
 
-## 语言风格
-- 简洁有力，金句频出
-- 避免废话和客套
-- 数据导向，结果导向
-- 既要又要的思维要杜绝
+**100 字内回显打分** 
+【评分总览】流量 x,运营 x,服务 x,热情 x,总分 x 分。
+
+✦ 写作规矩(必须死守)
+* 像我在微信给兄弟拍砖,口语利落、不编号。
+* 不复述学员背景,不加 AI 术语,不兜圈子。
+* 字数 ≤ 500,句句带锋,直指"识局-拆解-落点"。
 
 ## 分析用户项目
 用户项目信息：{USER_DATA}
 评分详情：{SCORES}
 总分：{FINAL_SCORE}/100
 
-请基于以上信息，生成一份犀利且实用的商业定位分析报告。`;
+拿去,照着干。`;
                 
                 document.getElementById('prompt-editor').value = defaultPrompt;
                 savePrompt();
+                // 自动检查重置后的提示词状态
+                setTimeout(validatePrompt, 200);
             }
         }
 
@@ -791,6 +851,9 @@
                 }
             }
             
+            // 自动检查加载的提示词状态
+            setTimeout(validatePrompt, 200);
+            
             showToast(`已加载版本: ${version.name}`, 'success');
         }
 
@@ -822,10 +885,220 @@
 
             showToast('正在测试连接...', 'success');
             
-            // 模拟API测试
-            setTimeout(() => {
-                showToast(`${providerNames[provider]} 连接测试成功！`, 'success');
-            }, 1000);
+            try {
+                const result = await callAI("测试连接", {}, true);
+                if (result.success) {
+                    updateCorsStatus(!result.isMock);
+                    const message = result.isMock ? 
+                        `${providerNames[provider]} 连接测试（模拟模式）` : 
+                        `${providerNames[provider]} 连接测试成功！`;
+                    showToast(message, 'success');
+                } else {
+                    showToast(`连接失败: ${result.error}`, 'error');
+                }
+            } catch (error) {
+                showToast(`连接失败: ${error.message}`, 'error');
+            }
+        }
+
+        // 真实AI API调用函数
+        async function callAI(userMessage, testData = {}, isTest = false) {
+            const provider = document.getElementById('ai-provider').value;
+            const model = document.getElementById('model-version').value;
+            const temperature = parseFloat(document.getElementById('temperature').value);
+            const maxTokens = parseInt(document.getElementById('max-tokens').value);
+            const apiKey = document.getElementById('api-key').value;
+
+            if (!apiKey) {
+                throw new Error('请先设置API Key');
+            }
+
+            let prompt = '';
+            
+            if (!isTest) {
+                // 获取编辑器中的最新提示词
+                prompt = document.getElementById('prompt-editor').value.trim();
+                
+                if (!prompt) {
+                    throw new Error('提示词不能为空，请先在编辑器中输入提示词');
+                }
+                
+                // 替换占位符 - 确保用最新的提示词内容
+                prompt = prompt.replace('{USER_DATA}', JSON.stringify(testData.basicInfo || {}, null, 2));
+                prompt = prompt.replace('{SCORES}', JSON.stringify(testData.scores || {}, null, 2));
+                prompt = prompt.replace('{FINAL_SCORE}', testData.finalScore || 0);
+                
+                console.log('使用的提示词:', prompt.substring(0, 200) + '...');
+            } else {
+                prompt = "你好，这是一个API连接测试。请简单回复'连接成功'。";
+            }
+
+            const apiConfigs = {
+                deepseek: {
+                    url: 'https://api.deepseek.com/v1/chat/completions',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: {
+                        model: model,
+                        messages: [
+                            { role: 'user', content: prompt }
+                        ],
+                        temperature: temperature,
+                        max_tokens: maxTokens
+                    }
+                },
+                openai: {
+                    url: 'https://api.openai.com/v1/chat/completions',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: {
+                        model: model,
+                        messages: [
+                            { role: 'user', content: prompt }
+                        ],
+                        temperature: temperature,
+                        max_tokens: maxTokens
+                    }
+                },
+                claude: {
+                    url: 'https://api.anthropic.com/v1/messages',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': apiKey,
+                        'anthropic-version': '2023-06-01'
+                    },
+                    body: {
+                        model: model,
+                        max_tokens: maxTokens,
+                        temperature: temperature,
+                        messages: [
+                            { role: 'user', content: prompt }
+                        ]
+                    }
+                }
+            };
+
+            const config = apiConfigs[provider];
+            if (!config) {
+                throw new Error(`不支持的AI服务商: ${provider}`);
+            }
+
+            try {
+                const response = await fetch(config.url, {
+                    method: 'POST',
+                    headers: config.headers,
+                    body: JSON.stringify(config.body),
+                    mode: 'cors' // 明确指定CORS模式
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(`API请求失败: ${response.status} ${errorData.error?.message || response.statusText}`);
+                }
+
+                const data = await response.json();
+                
+                // 处理不同API的响应格式
+                let content = '';
+                if (provider === 'claude') {
+                    content = data.content?.[0]?.text || '无响应内容';
+                } else {
+                    content = data.choices?.[0]?.message?.content || '无响应内容';
+                }
+
+                return {
+                    success: true,
+                    content: content,
+                    usage: data.usage
+                };
+
+            } catch (error) {
+                console.error('API调用错误:', error);
+                
+                // 检测是否是CORS错误
+                if (error.message.includes('Failed to fetch') || 
+                    error.message.includes('Network request failed') ||
+                    error.message.includes('CORS') ||
+                    error.name === 'TypeError') {
+                    
+                    // CORS错误，返回模拟数据作为演示
+                    console.warn('检测到CORS跨域问题，使用模拟数据演示新提示词效果');
+                    
+                    if (isTest) {
+                        return {
+                            success: true,
+                            content: '连接成功（模拟模式）',
+                            isMock: true
+                        };
+                    } else {
+                        const mockContent = generateMockReportWithNewPrompt(testData);
+                        return {
+                            success: true,
+                            content: mockContent,
+                            isMock: true
+                        };
+                    }
+                }
+                
+                // 处理其他常见错误
+                let errorMessage = error.message;
+                if (error.message.includes('401')) {
+                    errorMessage = 'API Key无效或已过期，请检查密钥';
+                } else if (error.message.includes('403')) {
+                    errorMessage = 'API访问被拒绝，请检查权限设置';
+                } else if (error.message.includes('429')) {
+                    errorMessage = 'API调用频率超限，请稍后再试';
+                } else if (error.message.includes('insufficient_quota')) {
+                    errorMessage = 'API余额不足，请充值';
+                }
+                
+                return {
+                    success: false,
+                    error: errorMessage
+                };
+            }
+        }
+
+        // 使用新提示词格式生成模拟报告
+        function generateMockReportWithNewPrompt(testData) {
+            const score = testData.finalScore || 42;
+            
+            let conclusion = '';
+            if (score >= 90) {
+                conclusion = '强推:加杠杆、加资源、加速干。';
+            } else if (score >= 80) {
+                conclusion = '优质:好胎盘,但骨架还缺一根梁。';
+            } else if (score >= 70) {
+                conclusion = '鸡肋:流量或模式不翻新,等于瞎折腾。';
+            } else if (score >= 60) {
+                conclusion = '不优:赶紧调头,别再烧时间。';
+            } else {
+                conclusion = '重启:方向+打法双失配,马上重定位。';
+            }
+
+            return `**开场一句——判决书式结论**
+
+你这个项目${score}分，${conclusion}
+
+**三刀精准拆(每刀一句)**
+
+* **流量** → 获客渠道单一,主要靠朋友圈,规模化流量来源缺失。
+* **运营** → 团队全是技术背景,缺销售基因,交付流程待梳理。  
+* **服务** → AI客服同质化严重,差异化不足,复购率堪忧。
+
+**一句制胜动作(第一性原理)**
+
+别再码代码了,先找到一个愿意付费的客户,跑通整个成交流程再说。
+
+**100 字内回显打分**
+【评分总览】流量 ${testData.scores?.traffic?.total || 8},运营 ${testData.scores?.operation?.total || 12},服务 ${testData.scores?.service?.total || 15},热情 ${testData.scores?.preference?.total || 7},总分 ${score} 分。
+
+---
+⚠️ 注意: 这是CORS跨域限制下的模拟演示。要使用真实AI，需要配置代理服务器。`;
         }
 
         // 填充测试数据
@@ -833,15 +1106,30 @@
             const testData = {
                 basicInfo: {
                     name: "张创业",
-                    industry: "AI从业者",
+                    industry: "AI从业者", 
                     stage: "想法构思阶段",
-                    description: "基于AI技术开发智能客服机器人，主要面向中小企业，采用SaaS订阅模式。目前已完成技术原型，正在寻找种子客户验证产品市场匹配度。团队3人，有技术背景但缺乏销售经验。"
+                    description: "基于AI技术开发智能客服机器人，主要面向中小企业，采用SaaS订阅模式。目前已完成技术原型，正在寻找种子客户验证产品市场匹配度。团队3人，有技术背景但缺乏销售经验，缺少市场推广渠道。"
                 },
                 scores: {
-                    traffic: { total: 8, details: [2, 1, 2, 1, 1, 1] },
-                    operation: { total: 12, details: [3, 2, 2, 2, 2, 1] },
-                    service: { total: 15, details: [3, 3, 3, 2, 2, 2] },
-                    preference: { total: 7 }
+                    traffic: { 
+                        total: 8, 
+                        details: [2, 1, 2, 1, 1, 1],
+                        analysis: "获客渠道单一，主要依赖朋友圈，缺乏规模化流量来源"
+                    },
+                    operation: { 
+                        total: 12, 
+                        details: [3, 2, 2, 2, 2, 1],
+                        analysis: "运营节奏不清晰，交付流程待优化，团队角色分工模糊"
+                    },
+                    service: { 
+                        total: 15, 
+                        details: [3, 3, 3, 2, 2, 2],
+                        analysis: "产品同质化严重，复购率低，毛利空间有限"
+                    },
+                    preference: { 
+                        total: 7,
+                        analysis: "创业热情高但持续性待验证"
+                    }
                 },
                 finalScore: 42
             };
@@ -858,79 +1146,93 @@
             testBtn.disabled = true;
 
             try {
-                const testData = JSON.parse(document.getElementById('test-data').value);
-                const prompt = document.getElementById('prompt-editor').value;
+                const testDataText = document.getElementById('test-data').value.trim();
+                if (!testDataText) {
+                    throw new Error('请先输入测试数据');
+                }
+
+                // 确保使用最新的提示词
+                const currentPromptText = document.getElementById('prompt-editor').value.trim();
+                if (!currentPromptText) {
+                    throw new Error('请先在编辑器中输入提示词');
+                }
+
+                // 显示正在使用的提示词版本信息
+                const promptPreview = currentPromptText.substring(0, 100).replace(/\n/g, ' ') + '...';
+                console.log('当前使用的提示词预览:', promptPreview);
                 
-                // 模拟API调用
+                const testData = JSON.parse(testDataText);
                 const startTime = Date.now();
-                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // 在结果区域显示使用的提示词信息
+                document.getElementById('test-result').textContent = `正在使用提示词生成报告...\n当前提示词: ${promptPreview}`;
+                
+                // 调用真实AI API
+                const result = await callAI("请根据提供的数据生成商业分析报告", testData);
                 const endTime = Date.now();
                 
-                const mockReport = generateMockReport(testData);
-                document.getElementById('test-result').textContent = mockReport;
-                
-                // 更新统计
-                updateStats(endTime - startTime);
-                showToast('测试报告生成成功！', 'success');
+                if (result.success) {
+                    // 检查是否是模拟数据
+                    const reportInfo = result.isMock ? 
+                        `=== ⚠️ 模拟演示（CORS限制） ===
+由于浏览器CORS跨域策略，无法直接调用AI API
+当前显示使用新提示词格式的模拟效果
+要使用真实AI，请参考下方解决方案
+
+使用提示词: ${currentPromptText.split('\n')[0]}
+模拟时间: ${new Date().toLocaleString()}
+演示模式: 新版"诊断动刀指南"格式
+
+=== 模拟分析报告 ===
+${result.content}
+
+=== CORS问题解决方案 ===
+1. 使用浏览器扩展: CORS Unblock 或 Allow CORS
+2. 设置代理服务器: Nginx/Node.js代理API请求  
+3. 后端处理: 在后端调用AI API，前端调用后端接口
+4. 开发工具: 使用 --disable-web-security 启动Chrome
+
+推荐方案: 将此控制台部署到支持服务端代理的环境中` :
+                        `=== 真实AI报告生成成功 ===
+使用提示词: ${currentPromptText.split('\n')[0]}
+生成时间: ${new Date().toLocaleString()}
+响应时长: ${endTime - startTime}ms
+AI模型: ${document.getElementById('ai-provider').value} - ${document.getElementById('model-version').value}
+
+=== 分析报告 ===
+${result.content}`;
+                    
+                    document.getElementById('test-result').textContent = reportInfo;
+                    
+                    // 更新统计
+                    updateStats(endTime - startTime, true);
+                    
+                    // 更新CORS状态显示
+                    updateCorsStatus(!result.isMock);
+                    
+                    const toastMessage = result.isMock ? 
+                        '演示成功！使用了新提示词格式（模拟数据）' : 
+                        '测试报告生成成功！使用了最新提示词';
+                    showToast(toastMessage, 'success');
+                    
+                    // 显示使用统计
+                    if (result.usage) {
+                        console.log('API使用统计:', result.usage);
+                    }
+                } else {
+                    document.getElementById('test-result').textContent = `生成失败: ${result.error}`;
+                    showToast(`报告生成失败: ${result.error}`, 'error');
+                    updateStats(endTime - startTime, false);
+                }
                 
             } catch (error) {
-                document.getElementById('test-result').textContent = '错误：' + error.message;
-                showToast('测试失败：数据格式错误', 'error');
+                document.getElementById('test-result').textContent = `错误: ${error.message}`;
+                showToast(`测试失败: ${error.message}`, 'error');
+                updateStats(0, false);
             } finally {
                 testBtn.textContent = originalText;
                 testBtn.disabled = false;
             }
-        }
-
-        // 生成模拟报告
-        function generateMockReport(data) {
-            return `# 【李一舟3.0】商业项目定位分析报告
-
-## 🎯 核心判断
-
-**底层逻辑是**，你的项目定位精准度只有 ${Math.round(data.finalScore * 0.6)}%，核心问题在流量获取能力严重不足。
-
-**讲白了就是**，技术很牛，但不会卖货。再好的产品没人知道也是废铁。
-
-## 📊 深度解析
-
-**项目定位分析**  
-AI客服赛道确实是风口，但你们缺乏差异化。市场上已经有阿里云、腾讯云等巨头布局，中小团队很难突围。
-
-**商业模式问题**  
-SaaS订阅看起来很美，但客户凭什么选你？成本优势在哪？技术壁垒有多深？
-
-**运营效率瓶颈**  
-3人团队都是技术背景，这是典型的"技术人创业"误区。没有销售基因，再好的产品也卖不出去。
-
-## ⚡ 行动清单
-
-### 🔥 30天冲刺（流量突破）
-**找到** 一个细分场景，比如专门做美容院客服机器人  
-*→ 7天内完成行业调研，确定MVP方向*
-
-**搞定** 第一个付费客户，哪怕免费试用  
-*→ 30天内验证产品价值*
-
-### 📈 60天优化（运营升级）
-**招聘** 一个有销售经验的合伙人  
-*→ 60天内搭建销售体系*
-
-**建立** 客户成功案例库  
-*→ 用数据说话，提升转化率*
-
-### 🚀 90天验证（商业闭环）
-**达成** 10个付费客户，月收入10万+  
-*→ 验证商业模式可行性*
-
-## 💡 心法提醒
-
-核心在于先做对再做大。技术创业最大的坑就是"我觉得用户需要"，市场不相信眼泪。
-
-选择大于努力，与其在红海拼杀，不如找蓝海细分。
-
----
-*本报告由AI一人公司知识库生成，${new Date().toLocaleString()}*`;
         }
 
         // 清空测试数据
@@ -949,10 +1251,74 @@ SaaS订阅看起来很美，但客户凭什么选你？成本优势在哪？技�
             showToast('版本对比功能开发中...', 'success');
         }
 
+        // 检查提示词
+        function validatePrompt() {
+            const currentPrompt = document.getElementById('prompt-editor').value.trim();
+            const previewDiv = document.getElementById('prompt-preview');
+            
+            if (!currentPrompt) {
+                previewDiv.innerHTML = '<span style="color: #d32f2f;">❌ 提示词为空，请先输入内容</span>';
+                showToast('提示词不能为空', 'error');
+                return;
+            }
+
+            // 检查是否包含新版本的关键特征
+            const isNewVersion = currentPrompt.includes('诊断动刀指南') || 
+                                currentPrompt.includes('判决书式结论') ||
+                                currentPrompt.includes('三刀精准拆');
+            
+            const hasPlaceholders = currentPrompt.includes('{USER_DATA}') && 
+                                  currentPrompt.includes('{SCORES}') && 
+                                  currentPrompt.includes('{FINAL_SCORE}');
+
+            const firstLine = currentPrompt.split('\n')[0];
+            const wordCount = currentPrompt.length;
+            
+            let statusHtml = '';
+            if (isNewVersion) {
+                statusHtml += '<span style="color: #2e7d32;">✅ 使用最新"诊断动刀指南"版本</span><br>';
+            } else {
+                statusHtml += '<span style="color: #f57c00;">⚠️ 可能使用旧版本提示词</span><br>';
+            }
+            
+            if (hasPlaceholders) {
+                statusHtml += '<span style="color: #2e7d32;">✅ 包含必要的占位符</span><br>';
+            } else {
+                statusHtml += '<span style="color: #d32f2f;">❌ 缺少数据占位符</span><br>';
+            }
+            
+            statusHtml += `<span style="color: #1565c0;">📝 提示词长度: ${wordCount} 字符</span><br>`;
+            statusHtml += `<span style="color: #1565c0;">🎯 开头: ${firstLine.substring(0, 50)}...</span>`;
+            
+            previewDiv.innerHTML = statusHtml;
+            
+            if (isNewVersion && hasPlaceholders) {
+                showToast('提示词检查通过！可以正常使用', 'success');
+            } else {
+                showToast('提示词可能需要更新或修复', 'error');
+            }
+        }
+
+        // 更新CORS状态显示
+        function updateCorsStatus(isRealAPI = false) {
+            const corsStatusDiv = document.getElementById('cors-status');
+            if (isRealAPI) {
+                corsStatusDiv.innerHTML = '<span style="color: #2e7d32;">✅ 真实AI模式</span> - 成功调用AI API，生成真实分析报告';
+            } else {
+                corsStatusDiv.innerHTML = '<span style="color: #f57c00;">⚠️ 演示模式</span> - 由于CORS限制，当前使用模拟数据展示新提示词效果';
+            }
+        }
+
         // 更新统计数据
-        function updateStats(responseTime) {
+        function updateStats(responseTime, success = true) {
             stats.totalReports++;
             stats.responseTime = responseTime + 'ms';
+            
+            // 计算成功率
+            if (!stats.successCount) stats.successCount = 0;
+            if (success) stats.successCount++;
+            stats.successRate = Math.round((stats.successCount / stats.totalReports) * 100) + '%';
+            
             localStorage.setItem('adminStats', JSON.stringify(stats));
             loadStats();
         }
