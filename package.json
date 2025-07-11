@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "description": "AI一人公司商业评估系统",
   "main": "api/admin.js",
+  "packageManager": "npm@9.0.0",
   "scripts": {
     "build": "echo 'Building static site...' && mkdir -p dist && cp -r public/* dist/",
     "start": "node api/admin.js",
     "dev": "node api/admin.js",
-    "deploy": "vercel --prod"
+    "deploy": "vercel --prod",
+    "install": "npm install"
   },
   "engines": {
-    "node": ">=18.0.0",
+    "node": "18.x",
     "npm": ">=8.0.0"
   },
   "dependencies": {
